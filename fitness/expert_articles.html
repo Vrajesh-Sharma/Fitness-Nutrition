@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expert Articles</title>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <style>
+
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f3f4f6;
+      }
+      :root {
+        --primary-color: #ae2012; /* Red */
+        --secondary-color: #003566; /* Blue */
+        --light-bg: #ffffff; /* White */
+        --dark-bg: #333333; /* Dark gray */
+      }
+
+      .join-btn {
+        background-color: var(--primary-color); /* Button background */
+        color: var(--light-bg); /* White text */
+        padding: 10px 20px; /* Button padding */
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px; /* Rounded corners */
+        margin-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        text-decoration: none; /* Remove underline */
+      }
+
+      /* Button hover effect */
+      .join-btn:hover {
+        background-color: var(
+          --secondary-color
+        ); /* Change background on hover */
+        cursor: pointer;
+      }
+      /*expert articles style*/
+      .article {
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .article-card {
+        background-color: var(--light-bg);
+        border: 1px solid var(--primary-color);
+        border-radius: 10px;
+        box-shadow: 0 5px 3px rgba(0, 0, 0, 0.1);
+        width: 30%;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .article-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 7px rgba(0, 0, 0, 0.2);
+      }
+
+      .article-content {
+        padding: 15px;
+      }
+
+      .read-more {
+        display: inline-block;
+        margin: 10px;
+        padding: 0.5rem 1rem;
+        text-align: center;
+        color: var(--primary-color);
+        background-color: var(--light-bg);
+        text-decoration: none;
+        font-weight: bold;
+        border: 2px solid var(--primary-color);
+        border-radius: 20px;
+        transition: background-color 0.3s ease, color 0.3s ease,
+          transform 0.2s ease;
+      }
+
+      .read-more:hover {
+        background-color: var(--primary-color);
+        color: var(--light-bg);
+        transform: translateY(-2px); /* Slight lift effect on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <header class="fb-menu" id="header">
+      <div class="container header-container">
+        <h1 class="brand"><a href="index.html">EmpowerFit</a></h1>
+        <nav class="menu-main">
+          <ul>
+            <li class="has-dropdown workouts">
+              <a href="#" class="anchor dropdown-button">Workouts</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="workout_video.html">Workout Videos</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown programs">
+              <a href="#" class="anchor dropdown-button">Programs</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="meal_plan.html">Meal Plans</a></li>
+                <li><a href="routine.html">Routines</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown healthy-living">
+              <a href="#" class="anchor dropdown-button">Healthy Living</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="expert_articles.html">Expert Articles</a></li>
+                <li><a href="healthy_tips.html">Healthy Tips</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <div class="menu-controls">
+          <!-- Updated "Hi! Sign In" Dropdown -->
+          <div class="menu-login has-dropdown">
+            <div
+              class="menu-login-button logged-out dropdown-button"
+              tabindex="0"
+            >
+              <menu-avatar></menu-avatar>
+              <div class="menu-id">
+                <span id="signin">Hi! Sign In</span>
+                <span
+                  >My Fitness<i
+                    class="material-symbols-outlined fill nav-carrot"
+                  ></i
+                ></span>
+              </div>
+            </div>
+            <div class="menu-login-dropdown the-dropdown">
+              <div class="menu-login-join">
+                <h2>Join for Free!</h2>
+                <p>
+                  Join for free and start building and tracking your workouts!
+                </p>
+                <a href="#" class="btn -main -block">Join</a>
+                <a href="sign_up.html" class="btn -link-reverse -block upper"
+                  >Sign Up</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Updated Search Bar -->
+          <div class="menu-search">
+              <a href="dashboard.html" class="join-btn">User Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="article">
+      <!-- Article 1 -->
+      <div class="article-card">
+        <img
+          src="asset/articl1.png"
+          alt="Intermittent Fasting"
+          height="200px"
+          width="400px"
+        />
+        <div class="article-content">
+          <h3>Intermittent Fasting: Benefits and Risks</h3>
+          <p>
+            Intermittent fasting has become a popular trend for weight loss and
+            health improvement. Discover the benefits, potential risks, and if
+            it's the right approach for you.
+          </p>
+        </div>
+        <a
+          href="https://www.npjournal.org/article/S1555-4155(23)00395-1/fulltext"
+          class="read-more"
+          >Read More</a
+        >
+      </div>
+
+      <!-- Article 2 -->
+      <div class="article-card">
+        <img
+          src="asset/articl2.jpg"
+          alt="Hydration Tips"
+          height="200px"
+          width="400px"
+        />
+        <div class="article-content">
+          <h3>Hydration and Its Role in Nutrition</h3>
+          <p>
+            Proper hydration is essential for maintaining energy levels,
+            supporting digestion, and keeping your skin healthy. Learn how much
+            water you need and tips to stay hydrated.
+          </p>
+        </div>
+        <a
+          href="https://www.hsph.harvard.edu/news/hsph-in-the-news/the-importance-of-hydration/"
+          class="read-more"
+          >Read More</a
+        >
+      </div>
+
+      <!-- Article 3 -->
+      <div class="article-card">
+        <img
+          src="asset/articl3.jpeg.jpg"
+          alt="Meal Planning"
+          height="200px"
+          width="400px"
+        />
+        <div class="article-content">
+          <h3>Meal Planning for Weight Loss</h3>
+          <p>
+            Planning your meals ahead of time can help you stick to your
+            nutritional goals, prevent overeating, and reduce food waste.
+            Discover tips for effective meal planning.
+          </p>
+        </div>
+        <a
+          href="https://www.healthline.com/nutrition/weight-loss-meal-plan#tips"
+          class="read-more"
+          >Read More</a
+        >
+      </div>
+
+      <!-- Article 4 -->
+      <div class="article-card">
+        <img
+          src="asset/articl4.jpeg.jpg"
+          alt="Nutrient Dense Foods"
+          height="200px"
+          width="400px"
+        />
+        <div class="article-content">
+          <h3>Top 10 Nutrient-Dense Foods You Should Eat</h3>
+          <p>
+            Some foods are packed with more vitamins, minerals, and antioxidants
+            than others. Here are the top 10 nutrient-dense foods you should
+            incorporate into your diet.
+          </p>
+        </div>
+        <a
+          href="https://www.ucsfhealth.org/education/top-ten-foods-for-health"
+          class="read-more"
+          >Read More</a
+        >
+      </div>
+
+      <!-- Article 5 -->
+      <div class="article-card">
+        <img
+          src="asset/articl.webp"
+          alt="Protein Intake"
+          height="200px"
+          width="400px"
+        />
+        <div class="article-content">
+          <h3>How Much Protein Do You Really Need?</h3>
+          <p>
+            Protein is an essential macronutrient, but how much do you actually
+            need? Learn about daily protein requirements and the best sources of
+            protein for your diet.
+          </p>
+        </div>
+        <a
+          href="https://www.healthline.com/nutrition/how-much-protein-per-day"
+          class="read-more"
+          >Read More</a
+        >
+      </div>
+
+      <!-- Article 6 -->
+      <div class="article-card">
+        <img
+          src="asset/articl5.webp"
+          alt="Intermittent Fasting"
+          height="200px"
+          width="400px"
+        />
+        <div class="article-content">
+          <h3>Intermittent Fasting: Benefits and Risks</h3>
+          <p>
+            Intermittent fasting has become a popular trend for weight loss and
+            health improvement. Discover the benefits, potential risks, and if
+            it's the right approach for you.
+          </p>
+        </div>
+        <a
+          href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9998115/"
+          class="read-more"
+          >Read More</a
+        >
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="link1">
+        <a href="#">EmpowerFit</a><br />
+        <pre>
+Terms / Privacy / Help
+©2024 EmpowerFit Ltd</pre
+        >
+      </div>
+      <div class="link2">
+        <a href="#">Workout</a><br />
+        <a href="meal_plan.html">Meal Plans</a><br />
+        <a href="#">Routines</a>
+      </div>
+      <div class="link3">
+        <a href="expert_articles.html">Expert articles</a><br />
+        <a href="healthy_tips.html">healthy Tips</a><br />
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+    </footer>
+  </body>
+</html>

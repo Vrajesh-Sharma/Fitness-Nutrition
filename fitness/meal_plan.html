@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meal Plan</title>
+    <link rel="stylesheet" href="nav.css" />
+    <link rel="stylesheet" href="footer.css" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f3f4f6;
+      }
+      :root {
+        --primary-color: #ae2012; /* Red */
+        --secondary-color: #003566; /* Blue */
+        --light-bg: #ffffff; /* White */
+        --dark-bg: #333333; /* Dark gray */
+      }
+      .join-btn {
+        background-color: var(--primary-color); /* Button background */
+        color: var(--light-bg); /* White text */
+        padding: 10px 20px; /* Button padding */
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px; /* Rounded corners */
+        margin-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        text-decoration: none; /* Remove underline */
+      }
+
+      /* Button hover effect */
+      .join-btn:hover {
+        background-color: var(
+          --secondary-color
+        ); /* Change background on hover */
+        cursor: pointer;
+      }
+      .meal-plan {
+        display: flex;
+        margin: 20px;
+      }
+      .left-part {
+        width: 25%;
+      }
+      .meal-plan .sidebar {
+        width: 25%;
+        padding: 20px;
+        border-right: 1px solid #ccc;
+        background-color: #f9f9f9;
+        position: relative;
+      }
+      .meal-plan .content {
+        width: 75%;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .right-part {
+        display: flex;
+        flex-wrap: wrap;
+        width: 75%;
+        gap: 20px; /* Space between cards */
+        justify-items: center; /* Center the cards in their grid cells */
+        padding: 20px; /* Optional: add padding around the grid */
+      }
+
+      .meal-card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.2s;
+        width: 100%; /* Make sure the cards take full width of the grid cell */
+        max-width: 300px; /* Optional: limit the max width of each card */
+      }
+
+      .meal-card:hover {
+        transform: scale(1.05);
+      }
+
+      .meal-card img {
+        max-width: 100%;
+        border-radius: 8px;
+      }
+
+      .meal-card h3 {
+        font-weight: bold;
+        margin: 10px 0;
+      }
+
+      .sidebar img {
+        max-width: 100%;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+
+      /* Left part now has a structured layout for meal details */
+      .left-part {
+        width: 25%;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-right: 1px solid #ccc;
+        position: sticky;
+        top: 20px;
+      }
+      .meal-details {
+        margin-top: 20px;
+      }
+      .meal-details h2,
+      .meal-details h4,
+      .meal-details p {
+        margin-bottom: 10px;
+      }
+      .meal-details img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="fb-menu" id="header">
+      <div class="container header-container">
+        <h1 class="brand"><a href="index.html">EmpowerFit</a></h1>
+        <nav class="menu-main">
+          <ul>
+            <li class="has-dropdown workouts">
+              <a href="#" class="anchor dropdown-button">Workouts</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="workout_video.html">Workout Videos</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown programs">
+              <a href="#" class="anchor dropdown-button">Programs</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="meal_plan.html">Meal Plans</a></li>
+                <li><a href="routine.html">Routines</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown healthy-living">
+              <a href="#" class="anchor dropdown-button">Healthy Living</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="expert_articles.html">Expert Articles</a></li>
+                <li><a href="healthy_tips.html">Healthy Tips</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <div class="menu-controls">
+          <!-- Updated "Hi! Sign In" Dropdown -->
+          <div class="menu-login has-dropdown">
+            <div
+              class="menu-login-button logged-out dropdown-button"
+              tabindex="0"
+            >
+              <menu-avatar></menu-avatar>
+              <div class="menu-id">
+                <span id="signin">Hi! Sign In</span>
+                <span
+                  >My Fitness<i
+                    class="material-symbols-outlined fill nav-carrot"
+                  ></i
+                ></span>
+              </div>
+            </div>
+            <div class="menu-login-dropdown the-dropdown">
+              <div class="menu-login-join">
+                <h2>Join for Free!</h2>
+                <p>
+                  Join for free and start building and tracking your workouts!
+                </p>
+                <a href="#" class="btn -main -block">Join</a>
+                <a href="sign_up.html" class="btn -link-reverse -block upper"
+                  >Sign Up</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Updated Search Bar -->
+          <div class="menu-search">
+              <a href="dashboard.html" class="join-btn">User Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="meal-plan">
+      <div class="left-part" id="meal-details">
+        <h2 id="meal-name">Meal Details</h2>
+        <img
+          id="selected-img"
+          src=""
+          alt=""
+          style="width: 100%; border-radius: 8px"
+        />
+        <div class="meal-details">
+          <p id="selected-description"></p>
+          <h4>Recipe:</h4>
+          <p id="selected-recipe"></p>
+          <h4>Calories:</h4>
+          <p id="selected-calories"></p>
+        </div>
+      </div>
+
+      <div class="right-part">
+        <div
+          class="meal-card"
+          onclick="selectMeal('Grilled Salmon Salad', 'asset/11st.jpg', 'With avocado, mixed greens, and lemon vinaigrette', '1. Grill a seasoned salmon fillet until cooked through and flaky.\n2. Serve over a bed of mixed greens, cherry tomatoes, cucumber.\n3. Add vinaigrette and serve', '450 calories')"
+        >
+          <img src="asset/1st.jpg" alt="Meal 1" height="60%" width="95%"/>
+          <h3>Grilled Salmon Salad</h3>
+          <p>With avocado, mixed greens, and lemon vinaigrette</p>
+        </div>
+        <div
+          class="meal-card"
+          onclick="selectMeal('Chicken Caesar Wrap', 'asset/22nd.jpg', 'Grilled chicken with Caesar dressing and romaine lettuce', '1. Grill chicken\n2. Add dressing and lettuce to wrap\n3. Roll wrap and serve', '350 calories')"
+        >
+          <img src="asset\2nd.jpg" alt="Meal 2" height="60%" width="95%"/>
+          <h3>Chicken Caesar Wrap</h3>
+          <p>Grilled chicken with Caesar dressing and romaine lettuce</p>
+        </div>
+        <div
+          class="meal-card"
+          onclick="selectMeal('Vegetarian Quinoa Bowl', 'asset/33rd.jpg', 'With black beans, corn, and cilantro dressing', '1. Cook quinoa\n2. Add beans, corn, cilantro\n3. Drizzle dressing and serve', '400 calories')"
+        >
+          <img src="asset/3rd.jpg" alt="Meal 3" height="60%" width="95%" />
+          <h3>Vegetarian Quinoa Bowl</h3>
+          <p>With black beans, corn, and cilantro dressing</p>
+        </div>
+        <div
+          class="meal-card"
+          onclick="selectMeal('Crispy Chicken Rice Bowl', 'asset/chicken2.webp', 'Classic Italian pasta with eggs, pancetta, and Parmesan', '1. Cook pasta\n2. Mix eggs and Parmesan\n3. Add pancetta and serve', '500 calories')"
+        >
+          <img src="asset/chicken.jpeg.jpg" alt="Meal 4" height="60%" width="95%"/>
+          <h3>Crispy Chicken Rice Bowl</h3>
+          <p>
+            Crispy Chicken Katsu Bowls with spicy gingery chicken, steamed rice,
+            all the best toppings
+          </p>
+        </div>
+        <div
+          class="meal-card"
+          onclick="selectMeal('Creamy Cucumber Soup', 'asset/cucumber.jpg', 'Refreshing cucumber soup blended with avocado and herbs', '1. Marinate chicken in soy sauce, garlic, and ginger, then coat with cornstarch and fry until crispy.\n2.Serve fried chicken over steamed rice with sliced cucumbers and carrots. \n3. Chill and serve.', '150 calories')"
+        >
+          <img src="asset/cucumber.jpg" alt="Meal 5" height="60%" width="95%"/>
+          <h3>Creamy Cucumber Soup</h3>
+          <p>
+            Refreshing cucumber soup with cucumbers sautéed and pureed with
+            avocado and herbs.
+          </p>
+        </div>
+        <div
+          class="meal-card"
+          onclick="selectMeal('Beef Stir-Fry', 'asset/55th.jpeg.jpg', 'With bell peppers, onions, and soy-ginger sauce', '1. Slice 1 lb of beef (sirloin or flank) into thin strips, and marinate with soy sauce, garlic, and a bit of cornstarch for 15 minutes.\n2. Heat oil in a large skillet or wok over medium-high heat, and cook the beef strips until browned, then set aside.\n3. In the same pan, stir-fry sliced vegetables like bell peppers, broccoli, and onions for 3-4 minutes until tender.', '550 calories')"
+        >
+          <img src="asset/5th.jpg" alt="Meal 6" height="60%" width="95%"/>
+          <h3>Beef Stir-Fry</h3>
+          <p>With bell peppers, onions, and soy-ginger sauce</p>
+        </div>
+        <div
+          class="meal-card"
+          onclick="selectMeal('Mint and basil griddled peach salad', 'asset/77th.jpeg.jpg', 'Grilled peaches with mint, basil, and mixed greens', '1. Grill peach slices until lightly charred.\n2. Toss with mint, basil, and mixed greens.\n3. Drizzle with a light vinaigrette and serve.', '250 calories')"
+        >
+          <img src="asset/7ht.jpg" alt="Meal 5" height="60%" width="95%"/>
+          <h3>Mint and basil griddled peach salad</h3>
+          <p>
+            Grilled peaches tossed with fresh mint, basil, and mixed greens,
+            drizzled with a light vinaigrette.
+          </p>
+        </div>
+
+        <div
+          class="meal-card"
+          onclick="selectMeal('Summer fish stew', 'asset/88th.jpg', 'Light fish stew with tomatoes and herbs', '1. Sauté onions and garlic in olive oil.\n2. Add tomatoes, fish stock, and white fish fillets.\n3. Simmer until fish is cooked and serve with fresh herbs.', '400 calories')"
+        >
+          <img src="asset/8th.jpeg.jpg" alt="Meal 5" height="60%" width="95%"/>
+          <h3>Summer fish stew</h3>
+          <p>
+            A light and flavorful stew made with fresh tomatoes, herbs, and
+            white fish fillets, perfect for a summer meal.
+          </p>
+        </div>
+
+        <div
+          class="meal-card"
+          onclick="selectMeal('Cheesy Baked Gnocchi Skillet', 'asset/99th.jpeg.jpg', 'Baked gnocchi with cheese and tomato sauce', '1. Sauté gnocchi in a skillet with garlic and butter.\n2. Add tomato sauce and sprinkle with cheese.\n3. Bake in the oven until the cheese is bubbly and golden.', '600 calories')"
+        >
+          <img src="asset/9th.jpeg.jpg" alt="Meal 5" height="60%" width="95%"/>
+          <h3>Cheesy Baked Gnocchi Skillet</h3>
+          <p>
+            Soft gnocchi baked in a rich tomato sauce and topped with melted
+            cheese for a comforting meal.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="link1">
+        <a href="#">EmpowerFit</a><br />
+        <pre>
+    Terms / Privacy / Help
+    ©2024 EmpowerFit Ltd</pre
+        >
+      </div>
+      <div class="link2">
+        <a href="#">Workout</a><br />
+        <a href="meal_plan.html">Meal Plans</a><br />
+        <a href="#">Routines</a>
+      </div>
+      <div class="link3">
+        <a href="expert_articles.html">Expert articles</a><br />
+        <a href="healthy_tips.html">healthy Tips</a><br />
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+    </footer>
+    <script src="index.js"></script>
+    <script>
+      // Function to highlight the section
+      function selectMeal(name, imageSrc, description, recipe, calories) {
+        document.getElementById("meal-name").innerText = name;
+        document.getElementById("selected-img").src = imageSrc;
+        document.getElementById("selected-description").innerText = description;
+        document.getElementById("selected-recipe").innerText = recipe;
+        document.getElementById("selected-calories").innerText = calories;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+{
+    "users": [
+      {
+        "email": "john@example.com",
+        "name": "John Doe",
+        "age": 30,
+        "weight": 75,
+        "height": 180,
+        "fitnessGoal": "Lose weight",
+        "activityLevel": "Moderate"
+      },
+      {
+        "email": "jane@example.com",
+        "name": "Jane Smith",
+        "age": 28,
+        "weight": 62,
+        "height": 165,
+        "fitnessGoal": "Build muscle",
+        "activityLevel": "Active"
+      }
+    ]
+  }

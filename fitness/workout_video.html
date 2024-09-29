@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workout Video</title>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f3f4f6;
+      }
+      :root {
+        --primary-color: #ae2012; /* Red */
+        --secondary-color: #003566; /* Blue */
+        --light-bg: #ffffff; /* White */
+        --dark-bg: #333333; /* Dark gray */
+      }
+
+      .join-btn {
+        background-color: var(--primary-color); /* Button background */
+        color: var(--light-bg); /* White text */
+        padding: 10px 20px; /* Button padding */
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px; /* Rounded corners */
+        margin-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        text-decoration: none; /* Remove underline */
+      }
+
+      /* Button hover effect */
+      .join-btn:hover {
+        background-color: var(
+          --secondary-color
+        ); /* Change background on hover */
+        cursor: pointer;
+      }
+
+      /* Video Section */
+      #workout-video {
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        max-width: 800px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      #workout-video h2 {
+        color: #ae2012;
+      }
+
+      .video-container {
+        position: relative; /* Make the container relative */
+        text-align: center;
+        margin-bottom: 20px;
+        /* Optional: Add a background for visual effect */
+        background: url('your-video-thumbnail.jpg') center center no-repeat; /* Placeholder for video thumbnail */
+        background-size: cover; /* Cover the container */
+        height: 400px; /* Set height to match your video */
+      }
+
+      .play-button {
+        border-radius: 5%;
+        position: absolute; /* Position absolutely */
+        top: 50%; /* Center vertically */
+        left: 50%; /* Center horizontally */
+        transform: translate(-50%, -50%); /* Adjust for width and height */
+        width: 75%; /* Adjust size as needed */
+        height: 400px;
+        cursor: pointer;
+      }
+
+      .video-description {
+        text-align: left;
+      }
+
+      .video-description p {
+        margin: 10px 0;
+      }
+
+      .video-link {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #ae2012;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+
+      .video-link:hover {
+        background-color: #ae2012;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="fb-menu" id="header">
+      <div class="container header-container">
+        <h1 class="brand"><a href="index.html">EmpowerFit</a></h1>
+        <nav class="menu-main">
+          <ul>
+            <li class="has-dropdown workouts">
+              <a href="#" class="anchor dropdown-button">Workouts</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="workout_video.html">Workout Videos</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown programs">
+              <a href="#" class="anchor dropdown-button">Programs</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="meal_plan.html">Meal Plans</a></li>
+                <li><a href="routine.html">Routines</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown healthy-living">
+              <a href="#" class="anchor dropdown-button">Healthy Living</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="expert_articles.html">Expert Articles</a></li>
+                <li><a href="healthy_tips.html">Healthy Tips</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <div class="menu-controls">
+          <!-- Updated "Hi! Sign In" Dropdown -->
+          <div class="menu-login has-dropdown">
+            <div
+              class="menu-login-button logged-out dropdown-button"
+              tabindex="0"
+            >
+              <menu-avatar></menu-avatar>
+              <div class="menu-id">
+                <span id="signin">Hi! Sign In</span>
+                <span
+                  >My Fitness<i
+                    class="material-symbols-outlined fill nav-carrot"
+                  ></i
+                ></span>
+              </div>
+            </div>
+            <div class="menu-login-dropdown the-dropdown">
+              <div class="menu-login-join">
+                <h2>Join for Free!</h2>
+                <p>
+                  Join for free and start building and tracking your workouts!
+                </p>
+                <a href="#" class="btn -main -block">Join</a>
+                <a href="sign_up.html" class="btn -link-reverse -block upper"
+                  >Sign Up</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Updated Search Bar -->
+          <div class="menu-search">
+              <a href="dashboard.html" class="join-btn">User Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Workout Video Section -->
+    <section id="workout-video">
+      <h2>Workout Video</h2><br><br>
+      <div class="video-container">
+        <a href="https://youtube.com/watch?v=Sou12pLJFCc" target="_blank">
+          <img src="asset/workout..jpg" alt="Play" class="play-button" />
+        </a>
+      </div>
+
+      <div class="video-description">
+        <br><br>
+        <p><strong>Workout Title:</strong> Full Body HIIT Workout</p>
+        <p>
+          This workout is designed to give you a full-body burn using
+          High-Intensity Interval Training (HIIT) techniques. It's great for
+          building endurance, burning fat, and improving your overall fitness
+          level. The video walks you through each exercise with clear
+          instructions and modifications for different fitness levels.
+        </p>
+        <p>Video Length: <strong>30 minutes</strong></p>
+        <p>Level: <strong>Intermediate</strong></p>
+      </div>
+    </section>
+
+    <section id="workout-video">
+      <div class="workout-section">
+        <h3>Core Strengthening Workout</h3><br><br>
+        <div class="video-container">
+          <a href="https://youtube.com/watch?v=7xy99ZgARVA" target="_blank">
+            <img src="asset/core_workout.jpg" alt="Play" class="play-button" />
+          </a>
+        </div>
+        <div class="video-description">
+          <br><br>
+          <p>This workout is focused on core strengthening exercises. It’s perfect for anyone looking to build strong abdominal muscles and improve overall stability.</p>
+          <p>Video Length: <strong>20 minutes</strong> | Level: <strong>Beginner to Intermediate</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="workout-video">
+      <div class="workout-section">
+        <h3>Yoga for Flexibility</h3><br><br>
+        <div class="video-container">
+          <a href="https://www.youtube.com/watch?v=AB3Y-4a3ZrU&list=PLui6Eyny-UzzWwB4h9y7jAzLbeuCUczAl" target="_blank">
+            <img src="asset/yoga.jpg" alt="Play" class="play-button" />
+          </a>
+        </div>
+        <div class="video-description">
+          <br><br>
+          <p>This yoga session is designed to improve flexibility and release tension from your body. Perfect for both beginners and advanced yoga practitioners.</p>
+          <p>Video Length: <strong>45 minutes</strong> | Level: <strong>All Levels</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="workout-video">
+      <div class="workout-section">
+        <h3>Lower Body Strength Training</h3><br><br>
+        <div class="video-container">
+          <a href="https://www.youtube.com/watch?v=nwomKtzbjc&list=PLfj4lZyPiNalhw-M91j80VA1MTQK5nqE" target="_blank">
+            <img src="asset/lower body.jpg" alt="Play" class="play-button" />
+          </a>
+        </div>
+        <div class="video-description">
+          <br><br>
+          <p>This strength training session focuses on lower body exercises to build strength in your legs and glutes.</p>
+          <p>Video Length: <strong>30 minutes</strong> | Level: <strong>Intermediate</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <h3>Follow Us</h3>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+      </div>
+      <div>
+        <h3>Contact Us</h3>
+        <p>Email: support@empowerfit.com</p>
+        <p>Phone: +1-800-555-0199</p>
+      </div>
+      <div>
+        <h3>About Us</h3>
+        <p>EmpowerFit is dedicated to providing the best fitness content to help you achieve your health goals.</p>
+      </div>
+    </footer>
+  </body>
+</html>

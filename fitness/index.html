@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EmpowerFit</title>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <style>
+      /* Basic Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f3f4f6;
+      }
+      :root {
+        --primary-color: #ae2012; /* Red */
+        --secondary-color: #003566; /* Blue */
+        --light-bg: #ffffff; /* White */
+        --dark-bg: #333333; /* Dark gray */
+      }
+
+      /* main page */
+      #welcome-section {
+        background-color: black; /* Rectangular black background */
+        color: white; /* Make text white for better contrast */
+        padding: 10px; /* Reduced padding */
+        max-height: 700px; /* Set a maximum height for the section */
+        overflow: hidden; /* In case the content exceeds the height */
+      }
+
+      /* Flexbox container */
+      .poster {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%; /* Ensure the container fills the available space */
+      }
+
+      /* Left side styles */
+      .left {
+        flex: 2; /* Takes up more space */
+        text-align: center;
+      }
+
+      /* Right side styles */
+      .right {
+        flex: 1; /* Takes up less space */
+      }
+
+      /* h2 styling */
+      h2 {
+        font-size: 36px; /* Bigger font for h2 */
+        font-weight: bold; /* Bold font for h2 */
+        margin-bottom: 10px;
+        opacity: 0; /* Initially hidden */
+        animation: fadeIn 1.5s forwards; /* Animation for h2 */
+        animation-delay: 0.3s; /* Delay the animation */
+      }
+
+      /* p styling */
+      p {
+        font-size: 18px; /* Font size for paragraph */
+        line-height: 1.6; /* Line height for better readability */
+        opacity: 0; /* Initially hidden */
+        animation: fadeIn 2s forwards; /* Animation for p */
+        animation-delay: 0.6s; /* Delay the animation for staggered effect */
+      }
+
+      /* Button styling */
+      .join-btn {
+        display: inline-block;
+        background-color: var(--primary-color); /* Button background */
+        color: var(--light-bg); /* White text */
+        padding: 10px 20px; /* Button padding */
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 5px; /* Rounded corners */
+        margin-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        text-decoration: none; /* Remove underline */
+        opacity: 0; /* Initially hidden */
+        animation: fadeIn 2.5s forwards; /* Button fade-in animation */
+        animation-delay: 1s; /* Delay for button appearance */
+        transition: background-color 0.3s ease; /* Smooth background change on hover */
+      }
+
+      /* Button hover effect */
+      .join-btn:hover {
+        background-color: var(
+          --secondary-color
+        ); /* Change background on hover */
+        cursor: pointer;
+      }
+
+      /* img styling */
+      img {
+        max-width: 100%; /* Ensure image scales properly */
+        height: auto;
+        border-radius: 5px; /* Optional: Add rounded corners to the image */
+      }
+
+      /* Fade-in animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0; /* Start with invisible */
+          transform: translateY(20px); /* Move slightly downward */
+        }
+        to {
+          opacity: 1; /* Fully visible */
+          transform: translateY(0); /* Back to original position */
+        }
+      }
+
+      #featured-workouts {
+        background-color: var(--dark-bg); /* Dark background */
+        color: var(--light-bg); /* White text */
+        padding: 60px 20px;
+        text-align: center;
+      }
+
+      .banners {
+        display: flex;
+        flex-direction: column;
+      }
+      /* Center and style the title */
+      h2 {
+        font-size: 48px; /* Larger font size for the title */
+        font-weight: bold; /* Bold title */
+        text-align: center; /* Center the title */
+        margin-bottom: 20px;
+      }
+
+      /* Paragraph styling */
+      p {
+        font-size: 20px; /* Larger font for the paragraph */
+        margin-bottom: 40px; /* Spacing below the paragraph */
+        text-align: center; /* Center the paragraph */
+      }
+
+      /* Flexbox layout for cards */
+      .workout-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style-type: none; /* Remove bullet points */
+        padding: 0;
+        margin: 0;
+      }
+
+      /* Card styling */
+      .card {
+        background-color: var(--light-bg); /* White background */
+        color: var(--dark-bg); /* Dark text */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        padding: 20px;
+        margin: 20px;
+        flex: 0 1 calc(50% - 40px); /* Two cards per row */
+        text-align: left; /* Align card content to the left */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation on hover */
+      }
+
+      /* Card hover animation */
+      .card:hover {
+        transform: translateY(-10px); /* Lift card */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow */
+      }
+
+      /* Card title styling */
+      .card h3 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      /* Card description styling */
+      .card p {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      /* Explore button styling */
+      .explore-btn {
+        display: inline-block;
+        background-color: var(--primary-color); /* Primary color */
+        color: var(--light-bg); /* White text */
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+
+      /* Button hover effect */
+      .explore-btn:hover {
+        background-color: var(
+          --secondary-color
+        ); /* Change to secondary color */
+        cursor: pointer;
+      }
+      #user-analysis {
+        padding: 10%;
+      }
+
+      .dash {
+        padding: 15px 30px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        background-color: var(--primary-color);
+        border: none;
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-left: 45%;
+      }
+
+      .dash:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <header class="fb-menu" id="header">
+      <div class="container header-container">
+        <h1 class="brand"><a href="index.html">EmpowerFit</a></h1>
+        <nav class="menu-main">
+          <ul>
+            <li class="has-dropdown workouts">
+              <a href="#" class="anchor dropdown-button">Workouts</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="workout_video.html">Workout Videos</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown programs">
+              <a href="#" class="anchor dropdown-button">Programs</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="meal_plan.html">Meal Plans</a></li>
+                <li><a href="routine.html">Routines</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown healthy-living">
+              <a href="#" class="anchor dropdown-button">Healthy Living</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="expert_articles.html">Expert Articles</a></li>
+                <li><a href="healthy_tips.html">Healthy Tips</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <div class="menu-controls">
+          <!-- Updated "Hi! Sign In" Dropdown -->
+          <div class="menu-login has-dropdown">
+            <div
+              class="menu-login-button logged-out dropdown-button"
+              tabindex="0"
+            >
+              <menu-avatar></menu-avatar>
+              <div class="menu-id">
+                <span id="signin">Hi! Sign In</span>
+                <span
+                  >My Fitness<i
+                    class="material-symbols-outlined fill nav-carrot"
+                  ></i
+                ></span>
+              </div>
+            </div>
+            <div class="menu-login-dropdown the-dropdown">
+              <div class="menu-login-join">
+                <h2>Join for Free!</h2>
+                <p>
+                  Join for free and start building and tracking your workouts!
+                </p>
+                <a href="#" class="btn -main -block">Join</a>
+                <a href="sign_up.html" class="btn -link-reverse -block upper"
+                  >Sign Up</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Updated Search Bar -->
+          <div class="menu-search">
+              <a href="dashboard.html" class="join-btn">User Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Welcome Section -->
+      <section id="welcome-section">
+        <div class="poster">
+          <div class="left">
+            <h2>Welcome to EmpowerFit</h2>
+            <p>
+              Your one-stop destination for workout videos, healthy recipes, and
+              expert wellness advice.
+            </p>
+            <a href="#" class="join-btn">Join Now</a>
+          </div>
+          <div class="right">
+            <img src="asset/bg.png" alt="Background Image" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Workouts Section -->
+      <section id="featured-workouts">
+        <div class="banners">
+          <h2>Our Best Facilities</h2>
+          <p>Explore our most popular features</p>
+          <ul class="workout-list">
+            <li class="card">
+              <h3>Full Body Workout</h3>
+              <p>Get a full body burn in just 30 minutes!</p>
+              <a href="workout_video.html" class="explore-btn">Explore</a>
+            </li>
+            <li class="card">
+              <h3>7 Days Challenge</h3>
+              <p>
+                Get ready to embark on a transformative journey that combines
+                full-body workouts, balanced nutrition, and mindful yoga
+                practices
+              </p>
+              <a href="7_days.html" class="explore-btn">Explore</a>
+            </li>
+            <li class="card">
+              <h3>Body Fitness</h3>
+              <p>Eat healthy , Be healthy</p>
+              <a href="healthy_tips.html" class="explore-btn">Explore</a>
+            </li>
+            <li class="card">
+              <h3>Yoga for Relaxation</h3>
+              <p>Relax your body and mind with this calming session.</p>
+              <a href="yoga.html" class="explore-btn">Explore</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- User Analysis Graph Section -->
+      <section id="user-analysis">
+        <div class="container">
+          <h2>Track Your Fitness Progress</h2>
+          <p>Track your workouts and monitor your progress over time:</p>
+          <a href="dashboard.html"><button class="dash">Track</button></a>
+          <!-- Placeholder for Graph -->
+          <!-- <canvas id="user-progress-graph" width="400" height="200"></canvas> -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="link1">
+        <a href="#">EmpowerFit</a><br />
+        <pre>
+  Terms / Privacy / Help
+  ©2024 EmpowerFit Ltd</pre
+        >
+      </div>
+      <div class="link2">
+        <a href="#">Workout</a><br />
+        <a href="meal_plan.html">Meal Plans</a><br />
+        <a href="#">Routines</a>
+      </div>
+      <div class="link3">
+        <a href="expert_articles.html">Expert articles</a><br />
+        <a href="healthy_tips.html">healthy Tips</a><br />
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+    </footer>
+
+    <script src="index.js"></script>
+  </body>
+</html>

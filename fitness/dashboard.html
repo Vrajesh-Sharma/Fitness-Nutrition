@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f3f4f6;
+      }
+      :root {
+        --primary-color: #ae2012; /* Red */
+        --secondary-color: #003566; /* Blue */
+        --light-bg: #ffffff; /* White */
+        --dark-bg: #333333; /* Dark gray */
+      }
+
+      .join-btn {
+        background-color: var(--primary-color); /* Button background */
+        color: var(--light-bg); /* White text */
+        padding: 10px 20px; /* Button padding */
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px; /* Rounded corners */
+        margin-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        text-decoration: none; /* Remove underline */
+      }
+
+      /* Button hover effect */
+      .join-btn:hover {
+        background-color: var(
+          --secondary-color
+        ); /* Change background on hover */
+        cursor: pointer;
+      }
+
+        /* Main content styling */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        /* Main container to hold both the user profile and metrics */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        /* User Profile Section */
+        .user-profile {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #ddd;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-profile img {
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .user-details {
+            text-align: center;
+        }
+
+        .input-section {
+            margin-top: 15px;
+        }
+
+        .input-section input {
+            display: block;
+            margin: 5px auto;
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #calculateBMI {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #calculateBMI:hover {
+            background-color: #0056b3;
+        }
+
+        /* Metrics Section */
+        .metrics {
+            width: 65%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .metric {
+            width: 48%; /* 2 metrics per row */
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .metric h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .metric .value {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .metric p {
+            font-size: 16px;
+        }
+
+        /* Chart section */
+        .charts {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Ensure both charts take 50% of the available space */
+            gap: 20px; /* Add space between the charts */
+            margin-bottom: 40px;
+        }
+
+        .chart {
+            background-color: #292929;
+            padding: 20px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Specific size for canvas */
+        canvas {
+            display: block;
+            width: 100% !important; /* Take full width of container */
+            height: 300px !important; /* Set a fixed height */
+        }
+
+        .input-section {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .input-section input {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+  <header class="fb-menu" id="header">
+    <div class="container header-container">
+      <h1 class="brand"><a href="index.html">EmpowerFit</a></h1>
+      <nav class="menu-main">
+        <ul>
+          <li class="has-dropdown workouts">
+            <a href="#" class="anchor dropdown-button">Workouts</a>
+            <ul class="sub-menu the-dropdown">
+              <li><a href="workout_video.html">Workout Videos</a></li>
+            </ul>
+          </li>
+          <li class="has-dropdown programs">
+            <a href="#" class="anchor dropdown-button">Programs</a>
+            <ul class="sub-menu the-dropdown">
+              <li><a href="meal_plan.html">Meal Plans</a></li>
+              <li><a href="routine.html">Routines</a></li>
+            </ul>
+          </li>
+          <li class="has-dropdown healthy-living">
+            <a href="#" class="anchor dropdown-button">Healthy Living</a>
+            <ul class="sub-menu the-dropdown">
+              <li><a href="expert_articles.html">Expert Articles</a></li>
+              <li><a href="healthy_tips.html">Healthy Tips</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="menu-controls">
+        <!-- Updated "Hi! Sign In" Dropdown -->
+        <div class="menu-login has-dropdown">
+          <div
+            class="menu-login-button logged-out dropdown-button"
+            tabindex="0"
+          >
+            <menu-avatar></menu-avatar>
+            <div class="menu-id">
+              <span id="signin">Hi! Sign In</span>
+              <span
+                >My Fitness<i
+                  class="material-symbols-outlined fill nav-carrot"
+                ></i
+              ></span>
+            </div>
+          </div>
+          <div class="menu-login-dropdown the-dropdown">
+            <div class="menu-login-join">
+              <h2>Join for Free!</h2>
+              <p>
+                Join for free and start building and tracking your workouts!
+              </p>
+              <a href="#" class="btn -main -block">Join</a>
+              <a href="sign_up.html" class="btn -link-reverse -block upper"
+                >Sign Up</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Updated Search Bar -->
+        <div class="menu-search">
+            <a href="dashboard.html" class="join-btn">User Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </header>
+    <div class="container">
+       
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h2>Dashboard Health Rate</h2>
+            </div>
+
+          <div class="container">
+            <div class="user-profile">
+              <img src="https://via.placeholder.com/100" alt="User Photo">
+              <div class="user-details">
+                  <h3 id="username">John Doe</h3>
+                  <p id="useremail">Email: johndoe@example.com</p>
+              </div>
+              <div class="input-section">
+                  <input type="number" id="weight" placeholder="Weight (kg)" min="0">
+                  <input type="number" id="height" placeholder="Height (m)" min="0" step="0.01">
+                  <button id="calculateBMI">Calculate BMI</button>
+              </div>
+            </div>
+  
+            <!-- Metrics Section -->
+            <div class="metrics">
+                <div class="metric">
+                    <h3>HEARTRATE</h3>
+                    <p class="value">96 <span>bpm</span></p>
+                    <p>Goal: 120 bpm</p>
+                </div>
+                <div class="metric">
+                    <h3>CALORIES BURN</h3>
+                    <p class="value">360 <span>kcal</span></p>
+                    <p>Goal: 500 kcal</p>
+                </div>
+                <div class="metric">
+                    <h3>STEPS</h3>
+                    <p class="value">1.2k <span>steps</span></p>
+                    <p>Goal: 2000 steps</p>
+                </div>
+                <div class="metric">
+                    <h3>DISTANCE</h3>
+                    <p class="value">3.8 <span>km</span></p>
+                    <p>Goal: 4 km</p>
+                </div>
+            </div>
+          </div>
+
+            <!-- Charts Section -->
+            <div class="charts">
+                <div class="chart">
+                    <h4>BMI by Month</h4>
+                    <canvas id="bmiChart"></canvas>
+                </div>
+                <div class="chart">
+                    <h4>Food Group background</h4>
+                    <canvas id="foodGroupChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+      <div class="link1">
+        <a href="#">EmpowerFit</a><br />
+        <pre>
+  Terms / Privacy / Help
+  ©2024 EmpowerFit Ltd</pre
+        >
+      </div>
+      <div class="link2">
+        <a href="#">Workout</a><br />
+        <a href="meal_plan.html">Meal Plans</a><br />
+        <a href="#">Routines</a>
+      </div>
+      <div class="link3">
+        <a href="expert_articles.html">Expert articles</a><br />
+        <a href="healthy_tips.html">healthy Tips</a><br />
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+    </footer>
+
+    <script>
+        document.getElementById('calculateBMI').addEventListener('click', function () {
+        const weight = parseFloat(document.getElementById('weight').value);
+        const height = parseFloat(document.getElementById('height').value);
+        if (weight && height) {
+            const bmi = (weight / (height * height)).toFixed(2);
+            alert(`Your BMI is: ${bmi}`);
+        } else {
+            alert('Please enter valid weight and height.');
+        }
+    });
+
+    let bmiData = [25.5, 24.8, 25.2, 24.5, 25.1, 24.7, 25.3, 25.0, 24.6, 25.4, 24.9, 25.1];
+    const bmiChart = document.getElementById('bmiChart').getContext('2d');
+
+    // Initialize the BMI chart
+    const chart1 = new Chart(bmiChart, {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            datasets: [{
+                label: 'BMI',
+                data: bmiData,
+                borderColor: 'rgba(255, 159, 64, 1)',
+                fill: false,
+                borderWidth: 3,
+                pointBackgroundColor: 'rgba(255, 159, 64, 1)',
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            }
+        }
+    });
+
+    // Food Group Breakdown Pie Chart
+    const foodGroupChart = document.getElementById('foodGroupChart').getContext('2d');
+    const chart3 = new Chart(foodGroupChart, {
+        type: 'pie',
+        data: {
+            labels: ['Fruits', 'Vegetables', 'Grains', 'Protein', 'Dairy'],
+            datasets: [{
+                label: 'Food Group Breakdown',
+                data: [20, 30, 25, 15, 10], // Sample data for food groups
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.8)', // Fruits - blue
+                    'rgba(75, 192, 192, 0.8)', // Vegetables - green
+                    'rgba(255, 206, 86, 0.8)', // Grains - yellow
+                    'rgba(255, 99, 132, 0.8)', // Protein - red
+                    'rgba(255, 105, 180, 0.8)' // Dairy - pink
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)', // Fruits
+                    'rgba(75, 192, 192, 1)', // Vegetables
+                    'rgba(255, 206, 86, 1)', // Grains
+                    'rgba(255, 99, 132, 1)', // Protein
+                    'rgba(255, 105, 180, 1)' // Dairy
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Food Group Breakdown'
+                }
+            }
+        }
+    });
+
+    </script>
+</body>
+</html>

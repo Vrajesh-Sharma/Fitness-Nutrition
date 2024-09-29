@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Routines, Diet, and Nutrition</title>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <style>
+      /* General Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f3f4f6;
+      }
+      :root {
+        --primary-color: #ae2012; /* Red */
+        --secondary-color: #003566; /* Blue */
+        --light-bg: #ffffff; /* White */
+        --dark-bg: #333333; /* Dark gray */
+      }
+      .join-btn {
+        background-color: var(--primary-color); /* Button background */
+        color: var(--light-bg); /* White text */
+        padding: 10px 20px; /* Button padding */
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px; /* Rounded corners */
+        margin-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        text-decoration: none; /* Remove underline */
+      }
+
+      /* Button hover effect */
+      .join-btn:hover {
+        background-color: var(
+          --secondary-color
+        ); /* Change background on hover */
+        cursor: pointer;
+      }
+      /* Sections */
+      section {
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        max-width: 800px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      section h2 {
+        color: #ae2012;
+        margin-top: 0;
+      }
+
+      ul {
+        padding-left: 20px;
+      }
+
+      ul li {
+        margin-bottom: 10px;
+      }
+
+      /* Table Styles */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+
+      table th,
+      table td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+
+      table th {
+        background-color: #ae2012;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="fb-menu" id="header">
+      <div class="container header-container">
+        <h1 class="brand"><a href="index.html">EmpowerFit</a></h1>
+        <nav class="menu-main">
+          <ul>
+            <li class="has-dropdown workouts">
+              <a href="#" class="anchor dropdown-button">Workouts</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="workout_video.html">Workout Videos</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown programs">
+              <a href="#" class="anchor dropdown-button">Programs</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="meal_plan.html">Meal Plans</a></li>
+                <li><a href="routine.html">Routines</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown healthy-living">
+              <a href="#" class="anchor dropdown-button">Healthy Living</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="expert_articles.html">Expert Articles</a></li>
+                <li><a href="healthy_tips.html">Healthy Tips</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <div class="menu-controls">
+          <!-- Updated "Hi! Sign In" Dropdown -->
+          <div class="menu-login has-dropdown">
+            <div
+              class="menu-login-button logged-out dropdown-button"
+              tabindex="0"
+            >
+              <menu-avatar></menu-avatar>
+              <div class="menu-id">
+                <span id="signin">Hi! Sign In</span>
+                <span
+                  >My Fitness<i
+                    class="material-symbols-outlined fill nav-carrot"
+                  ></i
+                ></span>
+              </div>
+            </div>
+            <div class="menu-login-dropdown the-dropdown">
+              <div class="menu-login-join">
+                <h2>Join for Free!</h2>
+                <p>
+                  Join for free and start building and tracking your workouts!
+                </p>
+                <a href="#" class="btn -main -block">Join</a>
+                <a href="sign_up.html" class="btn -link-reverse -block upper"
+                  >Sign Up</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Updated Search Bar -->
+          <div class="menu-search">
+              <a href="dashboard.html" class="join-btn">User Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="routine">
+      <h2>Daily Routine</h2>
+      <p>
+        Maintaining a balanced routine is essential for overall health. Here’s a
+        sample daily schedule to help you stay on track:
+      </p>
+      <ul>
+        <li>
+          <strong>6:00 AM - Morning Exercise</strong>: Start your day with a
+          brisk walk or a quick workout.
+        </li>
+        <li>
+          <strong>7:00 AM - Breakfast</strong>: Eat a healthy breakfast with
+          protein, fruits, and whole grains.
+        </li>
+        <li>
+          <strong>12:00 PM - Lunch</strong>: Have a balanced meal with lean
+          protein, vegetables, and healthy fats.
+        </li>
+        <li>
+          <strong>3:00 PM - Afternoon Snack</strong>: Grab a handful of nuts or
+          a piece of fruit to keep energy levels up.
+        </li>
+        <li>
+          <strong>7:00 PM - Dinner</strong>: A light dinner with a mix of
+          vegetables, whole grains, and protein is ideal.
+        </li>
+        <li>
+          <strong>9:00 PM - Wind Down</strong>: Meditate or do some light
+          stretching before bedtime.
+        </li>
+      </ul>
+    </section>
+
+    <section id="diet-plan">
+      <h2>Sample Diet Plan</h2>
+      <p>Here is a sample diet plan that focuses on balanced nutrition:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Meal</th>
+            <th>Time</th>
+            <th>Food Items</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Breakfast</td>
+            <td>7:00 AM</td>
+            <td>Oatmeal with berries, scrambled eggs, and green tea</td>
+          </tr>
+          <tr>
+            <td>Lunch</td>
+            <td>12:00 PM</td>
+            <td>Grilled chicken, quinoa, and mixed salad</td>
+          </tr>
+          <tr>
+            <td>Snack</td>
+            <td>3:00 PM</td>
+            <td>Greek yogurt with nuts</td>
+          </tr>
+          <tr>
+            <td>Dinner</td>
+            <td>7:00 PM</td>
+            <td>Baked salmon, steamed vegetables, and brown rice</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="nutrition-tips">
+      <h2>Nutrition Tips</h2>
+      <p>Follow these tips to ensure your body gets the nutrition it needs:</p>
+      <ul>
+        <li>
+          <strong>Stay Hydrated:</strong> Drink at least 8 glasses of water
+          daily.
+        </li>
+        <li>
+          <strong>Eat Whole Foods:</strong> Focus on whole grains, lean
+          proteins, and plenty of vegetables.
+        </li>
+        <li>
+          <strong>Avoid Processed Foods:</strong> Limit foods that are high in
+          sugar, salt, and unhealthy fats.
+        </li>
+        <li>
+          <strong>Portion Control:</strong> Keep portion sizes moderate to avoid
+          overeating.
+        </li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      <div class="link1">
+        <a href="#">EmpowerFit</a><br />
+        <pre>
+    Terms / Privacy / Help
+    ©2024 EmpowerFit Ltd</pre
+        >
+      </div>
+      <div class="link2">
+        <a href="#">Workout</a><br />
+        <a href="meal_plan.html">Meal Plans</a><br />
+        <a href="#">Routines</a>
+      </div>
+      <div class="link3">
+        <a href="expert_articles.html">Expert articles</a><br />
+        <a href="healthy_tips.html">healthy Tips</a><br />
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+    </footer>
+  </body>
+</html>

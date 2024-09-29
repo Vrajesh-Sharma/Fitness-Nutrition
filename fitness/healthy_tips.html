@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Healthy Recipes</title>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <style>
+
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f3f4f6;
+      }
+      :root {
+        --primary-color: #ae2012; /* Red */
+        --secondary-color: #003566; /* Blue */
+        --light-bg: #ffffff; /* White */
+        --dark-bg: #333333; /* Dark gray */
+      }
+
+      .join-btn {
+        background-color: var(--primary-color); /* Button background */
+        color: var(--light-bg); /* White text */
+        padding: 10px 20px; /* Button padding */
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px; /* Rounded corners */
+        margin-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        text-decoration: none; /* Remove underline */
+      }
+
+      /* Button hover effect */
+      .join-btn:hover {
+        background-color: var(
+          --secondary-color
+        ); /* Change background on hover */
+        cursor: pointer;
+      }
+      /* Main container styles */
+      .main-container {
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+        overflow-y: hidden;
+      }
+
+      /* Sidebar styles */
+      .sidebar {
+        position: fixed; /* Keep the sidebar fixed */
+        top: 0;
+        left: 0;
+        width: 20%; /* Sidebar width */
+        height: 100%;
+        background-color: var(--secondary-color);
+        color: var(--light-bg);
+        padding: 20px;
+        box-sizing: border-box;
+        overflow-y: hidden; /* Allow sidebar scrolling */
+      }
+
+      .sidebar h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: var(--light-bg);
+      }
+
+      .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .sidebar ul li {
+        margin-bottom: 10px;
+      }
+
+      .sidebar ul li a {
+        color: var(--light-bg);
+        text-decoration: none;
+        font-size: 18px;
+        display: block;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .sidebar ul li a:hover {
+        background-color: var(--primary-color);
+        cursor: pointer;
+      }
+
+      .highlight {
+        background-color: rgba(255, 255, 0, 0.3); /* Light yellow background */
+        transition: background-color 0.5s ease; /* Smooth transition */
+      }
+
+      /* Content section styles */
+      .content {
+        width: 80%;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: var(--light-bg);
+        color: var(--dark-bg);
+        overflow-y: auto;
+        margin-left: 20%; /* Space for the sidebar */
+      }
+
+      .content h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+      }
+
+      .recommendation-card {
+        background-color: var(--light-bg);
+        border-left: 5px solid var(--primary-color);
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      .recommendation-card h3 {
+        color: var(--secondary-color);
+        font-size: 22px;
+      }
+
+      .recommendation-card p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--dark-bg);
+      }
+      .recommendation-image {
+        margin-left: 230px;
+        width: 50%;
+        height: 300px;
+        /* Make image responsive */
+        border-radius: 25%;
+        margin-top: 15px;
+      }
+
+      .food-suggestions h4 {
+        margin-top: 15px;
+        color: var(--primary-color);
+      }
+
+      .food-suggestions ul {
+        padding-left: 20px;
+      }
+
+      .reminder {
+        position: relative;
+        background-color: var(--secondary-color);
+        color: var(--light-bg);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .reminder h3 {
+        font-size: 22px;
+        color: var(--light-bg);
+      }
+
+      .reminder p {
+        font-size: 16px;
+      }
+
+      :root {
+        --primary-color: #ae2012; /* Green */
+        --secondary-color: #003566; /* Blue */
+        --light-bg: #ffffff; /* White */
+        --dark-bg: #333333; /* Dark gray */
+      }
+
+      /* Header Styles */
+      .fb-menu {
+        background-color: var(--light-bg);
+        border-bottom: 2px solid var(--primary-color);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+      }
+
+      .brand a {
+        text-decoration: none;
+        color: var(--primary-color);
+        font-size: 1.7rem;
+        font-weight: 800;
+      }
+
+      /* Navigation Menu */
+      .menu-main ul {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+        position: relative; /* Make relative to position the dropdown */
+      }
+
+      .menu-main a {
+        text-decoration: none;
+        color: var(--dark-bg);
+        font-size: 1rem;
+        font-weight: 500;
+        position: relative;
+        padding: 0.5rem 1rem;
+        display: block;
+      }
+
+      .menu-main a:hover {
+        color: var(--primary-color);
+      }
+
+      .has-dropdown {
+        position: relative; /* Necessary for absolute positioning of dropdown */
+      }
+
+      .has-dropdown .the-dropdown {
+        display: none;
+        position: absolute;
+        top: 100%; /* Align the dropdown just below the parent */
+        left: 0;
+        min-width: 200px; /* Ensure dropdown is wide enough for content */
+        background-color: var(--light-bg);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a soft shadow */
+        border: 1px solid var(--primary-color);
+        border-radius: 5px; /* Rounded corners */
+        z-index: 999;
+        padding: 0.5rem 0; /* Add padding inside dropdown */
+      }
+
+      .has-dropdown:hover .the-dropdown {
+        display: block;
+      }
+
+      .the-dropdown li {
+        padding: 0.5rem 1rem; /* Spacing for dropdown items */
+      }
+
+      .the-dropdown li a {
+        color: var(--dark-bg);
+        display: block;
+        width: 100%;
+        padding: 0.5rem;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      .the-dropdown li a:hover {
+        background-color: var(--primary-color); /* Highlight item on hover */
+        color: var(--light-bg); /* White text on hover */
+        border-radius: 3px; /* Rounded edges for hover effect */
+      }
+
+      /* Dropdown Arrow */
+      .dropdown-button::after {
+        content: "▼"; /* Add an arrow to indicate dropdown */
+        font-size: 0.75rem;
+        margin-left: 0.5rem;
+        color: var(--secondary-color);
+        transition: transform 0.3s ease;
+      }
+
+      .has-dropdown:hover .dropdown-button::after {
+        transform: rotate(180deg); /* Rotate arrow on hover */
+      }
+
+      /* Menu Controls (Sign In, Search) */
+      .menu-controls {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .menu-login-button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+      }
+
+      .menu-id {
+        display: flex;
+        flex-direction: column;
+        color: var(--dark-bg);
+      }
+
+      .menu-login-dropdown {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        background-color: var(--light-bg);
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid var(--primary-color);
+        width: 250px; /* Add a fixed width for better layout */
+      }
+
+      .menu-login:hover .menu-login-dropdown {
+        display: block;
+      }
+
+      /* Updated Styles for Menu Login Join Section */
+      .menu-login-join {
+        text-align: center;
+      }
+
+      .menu-login-join h2 {
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+
+      .menu-login-join p {
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        color: var(--dark-bg);
+      }
+
+      /* Button Styles */
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+        border-radius: 5px;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .btn.-main {
+        background-color: var(--primary-color);
+        color: var(--light-bg);
+        border: none;
+      }
+
+      .btn.-main:hover {
+        background-color: var(--dark-bg);
+        transform: scale(1.05); /* Slight zoom on hover */
+      }
+
+      .btn.-link-reverse {
+        background-color: transparent;
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+      }
+
+      .btn.-link-reverse:hover {
+        background-color: var(--primary-color);
+        color: var(--light-bg);
+        transform: scale(1.05); /* Slight zoom on hover */
+      }
+
+      .btn.-block {
+        display: block;
+        width: 80%;
+        margin: 0 auto 1rem;
+      }
+
+      .btn.upper {
+        text-transform: uppercase;
+      }
+
+      /* Search Bar */
+      .menu-search {
+        display: flex;
+        align-items: center;
+      }
+
+      .search-form {
+        display: flex;
+        align-items: center;
+      }
+
+      .search-form input {
+        padding: 0.5rem;
+        border: 1px solid var(--primary-color);
+        border-radius: 5px;
+        width: 250px;
+      }
+
+      .search-form button {
+        background-color: var(--primary-color);
+        color: var(--light-bg);
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .search-form button i {
+        margin-left: 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      .search-form button:hover {
+        background-color: var(--dark-bg);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="fb-menu" id="header">
+      <div class="container header-container">
+        <h1 class="brand"><a href="index.html">EmpowerFit</a></h1>
+        <nav class="menu-main">
+          <ul>
+            <li class="has-dropdown workouts">
+              <a href="#" class="anchor dropdown-button">Workouts</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="workout_video.html">Workout Videos</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown programs">
+              <a href="#" class="anchor dropdown-button">Programs</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="meal_plan.html">Meal Plans</a></li>
+                <li><a href="routine.html">Routines</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown healthy-living">
+              <a href="#" class="anchor dropdown-button">Healthy Living</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="expert_articles.html">Expert Articles</a></li>
+                <li><a href="healthy_tips.html">Healthy Tips</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <div class="menu-controls">
+          <!-- Updated "Hi! Sign In" Dropdown -->
+          <div class="menu-login has-dropdown">
+            <div
+              class="menu-login-button logged-out dropdown-button"
+              tabindex="0"
+            >
+              <menu-avatar></menu-avatar>
+              <div class="menu-id">
+                <span id="signin">Hi! Sign In</span>
+                <span
+                  >My Fitness<i
+                    class="material-symbols-outlined fill nav-carrot"
+                  ></i
+                ></span>
+              </div>
+            </div>
+            <div class="menu-login-dropdown the-dropdown">
+              <div class="menu-login-join">
+                <h2>Join for Free!</h2>
+                <p>
+                  Join for free and start building and tracking your workouts!
+                </p>
+                <a href="#" class="btn -main -block">Join</a>
+                <a href="sign_up.html" class="btn -link-reverse -block upper"
+                  >Sign Up</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Updated Search Bar -->
+          <div class="menu-search">
+              <a href="dashboard.html" class="join-btn">User Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <div class="sidebar">
+        <h2>Categories</h2>
+        <ul>
+          <br /><br /><br />
+          <li><a href="#diet">Dietary Tips</a></li>
+          <li><a href="#exercise">Exercise Routines</a></li>
+          <li><a href="#hydration">Hydration Tips</a></li>
+          <li><a href="#sleep">Sleep Guidelines</a></li>
+        </ul>
+      </div>
+
+      <div class="content">
+        <h2>Health Tips and Recommendations</h2>
+
+        <!-- Dietary Tips Section -->
+        <div id="diet" class="recommendation-card">
+          <h3>Dietary Tips</h3>
+          <img
+            src="asset/diett.jpg"
+            alt="Healthy Diet"
+            class="recommendation-image"
+          />
+          <p>
+            Maintaining a balanced diet is essential for overall health and
+            well-being. A well-rounded diet not only helps in managing weight
+            but also provides the necessary nutrients to fuel your body. Aim to
+            include a variety of food groups in your daily meals, focusing on
+            whole, minimally processed options.
+          </p>
+          <ul>
+            <li>
+              <strong>Fruits and Vegetables:</strong> Aim for at least five
+              servings of fruits and vegetables each day. These foods are rich
+              in vitamins, minerals, and antioxidants that help protect against
+              chronic diseases.
+            </li>
+            <li>
+              <strong>Lean Proteins:</strong> Incorporate sources of lean
+              protein to support muscle health and repair. Options include
+              chicken breast, turkey, fish, legumes (like lentils and
+              chickpeas), and low-fat dairy products.
+            </li>
+            <li>
+              <strong>Whole Grains:</strong> Choose whole grains over refined
+              grains. Foods like quinoa, brown rice, oats, and whole grain bread
+              provide fiber, which aids in digestion and keeps you feeling full
+              longer.
+            </li>
+            <li>
+              <strong>Healthy Fats:</strong> Include sources of healthy fats,
+              such as avocados, nuts, seeds, and olive oil. These fats are
+              essential for brain health and can help reduce inflammation.
+            </li>
+            <li>
+              <strong>Hydration:</strong> Drink plenty of water throughout the
+              day. Proper hydration is crucial for digestion, metabolism, and
+              overall health. Aim for at least 8 glasses (2 liters) daily,
+              adjusting based on your activity level and climate.
+            </li>
+            <li>
+              <strong>Limit Processed Foods:</strong> Try to minimize your
+              intake of processed and sugary foods. These often contain
+              unhealthy fats, sugars, and additives that can lead to health
+              issues.
+            </li>
+            <li>
+              <strong>Portion Control:</strong> Pay attention to portion sizes.
+              Using smaller plates and serving dishes can help prevent
+              overeating. Listen to your body's hunger cues and stop eating when
+              you're satisfied, not stuffed.
+            </li>
+            <li>
+              <strong>Mindful Eating:</strong> Practice mindful eating by
+              slowing down and savoring each bite. This can help you enjoy your
+              meals more and recognize when you are full.
+            </li>
+          </ul>
+
+          <h4>Suggested Foods:</h4>
+          <ul>
+            <li>
+              Fresh vegetables: spinach, broccoli, carrots, bell peppers, kale.
+            </li>
+            <li>
+              Lean proteins: chicken breast, tofu, fish (like salmon and
+              mackerel), beans, eggs.
+            </li>
+            <li>
+              Whole grains: quinoa, brown rice, oats, barley, whole wheat bread.
+            </li>
+            <li>
+              Fruits: berries (strawberries, blueberries, raspberries), apples,
+              oranges, bananas, grapes.
+            </li>
+            <li>
+              Healthy fats: avocados, almonds, walnuts, chia seeds, olive oil.
+            </li>
+          </ul>
+
+          <h4>Additional Tips:</h4>
+          <ul>
+            <li>
+              <strong>Meal Prep:</strong> Consider preparing meals in advance to
+              save time and ensure you have healthy options readily available.
+            </li>
+            <li>
+              <strong>Cooking Methods:</strong> Opt for healthier cooking
+              methods such as grilling, steaming, baking, or sautéing instead of
+              frying.
+            </li>
+            <li>
+              <strong>Experiment with Spices:</strong> Use herbs and spices to
+              enhance the flavor of your meals without adding extra salt or
+              sugar.
+            </li>
+          </ul>
+
+          <p>
+            By incorporating these dietary tips and focusing on whole foods, you
+            can enhance your health and well-being while enjoying delicious
+            meals.
+          </p>
+        </div>
+
+        <!-- Exercise Routines Section -->
+        <div id="exercise" class="recommendation-card">
+          <h3>Exercise Routines</h3>
+          <img
+            src="asset/ex.png"
+            alt="Exercise Routines"
+            class="recommendation-image"
+          />
+          <p>
+            Engaging in regular physical activity is crucial for maintaining a
+            healthy lifestyle. Aim for at least 30 minutes of exercise daily.
+            This can include a mix of strength training and cardiovascular
+            exercises. Consider activities like running, swimming, cycling, or
+            group fitness classes to keep things interesting. Don't forget to
+            incorporate flexibility and balance exercises, such as yoga or
+            Pilates, into your routine.
+          </p>
+
+          <h4>Key Components of an Effective Exercise Routine:</h4>
+          <ul>
+            <li>
+              <strong>Warm-Up:</strong> Start every workout with a warm-up to
+              prepare your muscles and joints. This could include dynamic
+              stretches or light cardio.
+            </li>
+            <li>
+              <strong>Strength Training:</strong> Incorporate strength training
+              exercises at least twice a week. Focus on major muscle groups
+              using bodyweight exercises, resistance bands, or weights.
+            </li>
+            <li>
+              <strong>Cardiovascular Exercise:</strong> Include activities that
+              raise your heart rate. Aim for at least 150 minutes of moderate
+              aerobic activity or 75 minutes of vigorous activity per week.
+            </li>
+            <li>
+              <strong>Flexibility and Cool Down:</strong> End your workout with
+              stretching exercises to improve flexibility and help prevent
+              injury.
+            </li>
+          </ul>
+
+          <div class="food-suggestions">
+            <h4>Pre-Workout Snacks:</h4>
+            <ul>
+              <li>Banana with peanut butter</li>
+              <li>Greek yogurt with berries</li>
+              <li>Oatmeal with a dash of honey</li>
+              <li>Rice cakes with almond butter</li>
+              <li>Whole grain toast with avocado</li>
+            </ul>
+
+            <h4>Post-Workout Meals:</h4>
+            <ul>
+              <li>Grilled chicken with sweet potatoes</li>
+              <li>Protein smoothie with spinach and banana</li>
+              <li>Quinoa salad with mixed vegetables and chickpeas</li>
+              <li>Egg omelet with spinach and tomatoes</li>
+              <li>Brown rice with stir-fried vegetables and tofu</li>
+            </ul>
+          </div>
+
+          <h4>Additional Exercise Tips:</h4>
+          <ul>
+            <li>
+              <strong>Stay Consistent:</strong> Make exercise a regular part of
+              your daily routine. Find activities you enjoy to help you stick
+              with it.
+            </li>
+            <li>
+              <strong>Listen to Your Body:</strong> Pay attention to how your
+              body feels during workouts. Rest when needed and don’t push
+              through pain.
+            </li>
+            <li>
+              <strong>Set Realistic Goals:</strong> Start with achievable goals
+              and gradually increase intensity, duration, and frequency to avoid
+              burnout.
+            </li>
+          </ul>
+
+          <p>
+            By following a well-rounded exercise routine and fueling your body
+            with the right nutrients, you can achieve your fitness goals and
+            enhance your overall well-being.
+          </p>
+        </div>
+
+        <!-- Hydration Tips Section -->
+        <div id="hydration" class="recommendation-card">
+          <h3>Hydration Tips</h3>
+          <img
+            src="asset/hydra.jpg"
+            alt="Hydration Tips"
+            class="recommendation-image"
+          />
+          <p>
+            Staying hydrated is essential for maintaining optimal health. Aim to
+            drink at least 8 glasses of water per day, but adjust this amount
+            based on your activity level and the weather. If you're exercising
+            or in a hot climate, you may need to increase your intake. Hydration
+            helps regulate body temperature, keeps joints lubricated, and
+            delivers nutrients to cells.
+          </p>
+
+          <h4>Tips for Staying Hydrated:</h4>
+          <ul>
+            <li>Keep a water bottle with you throughout the day.</li>
+            <li>Set reminders to drink water if you often forget.</li>
+            <li>Infuse your water with fruits or herbs for added flavor.</li>
+            <li>Start your day with a glass of water.</li>
+          </ul>
+
+          <div class="food-suggestions">
+            <h4>Hydrating Foods:</h4>
+            <ul>
+              <li>Cucumber</li>
+              <li>Watermelon</li>
+              <li>Oranges</li>
+              <li>Celery</li>
+              <li>Strawberries</li>
+              <li>Zucchini</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sleep Guidelines Section -->
+        <div id="sleep" class="recommendation-card">
+          <h3>Sleep Guidelines</h3>
+          <img
+            src="asset/Sleep.jpg"
+            alt="Sleep Guidelines"
+            class="recommendation-image"
+          />
+          <p>
+            Quality sleep is vital for overall health and well-being. Aim for
+            7-9 hours of sleep each night to allow your body to recover and
+            rejuvenate. Establish a consistent sleep schedule by going to bed
+            and waking up at the same time every day. Create a calming bedtime
+            routine that may include reading, meditation, or gentle stretches.
+          </p>
+
+          <h4>Tips for Better Sleep:</h4>
+          <ul>
+            <li>Limit screen time at least an hour before bed.</li>
+            <li>Create a dark, quiet, and cool sleep environment.</li>
+            <li>Avoid large meals and caffeine close to bedtime.</li>
+            <li>
+              Consider relaxation techniques like deep breathing or gentle yoga.
+            </li>
+          </ul>
+
+          <div class="food-suggestions">
+            <h4>Foods that Promote Sleep:</h4>
+            <ul>
+              <li>Chamomile tea</li>
+              <li>Almonds</li>
+              <li>Kiwi</li>
+              <li>Warm milk with honey</li>
+              <li>Oatmeal</li>
+              <li>Fatty fish (like salmon)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="reminder">
+          <h3>Reminder:</h3>
+          <p>
+            Don't forget to schedule regular check-ups with your healthcare
+            provider to monitor your health and adjust your routines as needed.
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="link1">
+        <a href="#">EmpowerFit</a><br />
+        <pre>
+  Terms / Privacy / Help
+  ©2024 EmpowerFit Ltd</pre
+        >
+      </div>
+      <div class="link2">
+        <a href="#">Workout</a><br />
+        <a href="meal_plan.html">Meal Plans</a><br />
+        <a href="#">Routines</a>
+      </div>
+      <div class="link3">
+        <a href="expert_articles.html">Expert articles</a><br />
+        <a href="healthy_tips.html">healthy Tips</a><br />
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+    </footer>
+    <script src="index.js"></script>
+    <script>
+      
+//healthy_recipes js
+
+  document.querySelectorAll('.sidebar ul li a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Hide all recommendation cards first
+        const sections = document.querySelectorAll('.recommendation-card');
+        sections.forEach(section => {
+            section.style.display = 'none'; // Hide all sections
+            section.classList.remove('highlight'); // Remove highlight from all
+        });
+
+        // Show the clicked section
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            targetElement.style.display = 'block'; // Show the target section
+            targetElement.classList.add('highlight'); // Highlight the target
+        }
+    });
+  });
+
+  // Initially hide all sections except the first one
+  document.querySelectorAll('.recommendation-card').forEach((section, index) => {
+      section.style.display = index === 0 ? 'block' : 'none'; // Show first section
+  }); 
+    </script>
+  </body>
+</html>

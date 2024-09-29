@@ -1,0 +1,251 @@
+/* Color Palette */
+:root {
+  --primary-color: #ae2012; /* Green */
+  --secondary-color: #003566; /* Blue */
+  --light-bg: #ffffff; /* White */
+  --dark-bg: #333333; /* Dark gray */
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header Styles */
+.fb-menu {
+  background-color: var(--light-bg);
+  border-bottom: 2px solid var(--primary-color);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.brand a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+/* Navigation Menu */
+.menu-main ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  position: relative; /* Make relative to position the dropdown */
+}
+
+.menu-main a {
+  text-decoration: none;
+  color: var(--dark-bg);
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 1rem;
+  display: block;
+}
+
+.menu-main a:hover {
+  color: var(--primary-color);
+}
+
+.has-dropdown {
+  position: relative; /* Necessary for absolute positioning of dropdown */
+}
+
+.has-dropdown .the-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%; /* Align the dropdown just below the parent */
+  left: 0;
+  min-width: 200px; /* Ensure dropdown is wide enough for content */
+  background-color: var(--light-bg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a soft shadow */
+  border: 1px solid var(--primary-color);
+  border-radius: 5px; /* Rounded corners */
+  z-index: 999;
+  padding: 0.5rem 0; /* Add padding inside dropdown */
+}
+
+.has-dropdown:hover .the-dropdown {
+  display: block;
+}
+
+.the-dropdown li {
+  padding: 0.5rem 1rem; /* Spacing for dropdown items */
+}
+
+.the-dropdown li a {
+  color: var(--dark-bg);
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.the-dropdown li a:hover {
+  background-color: var(--primary-color); /* Highlight item on hover */
+  color: var(--light-bg); /* White text on hover */
+  border-radius: 3px; /* Rounded edges for hover effect */
+}
+
+/* Dropdown Arrow */
+.dropdown-button::after {
+  content: "▼"; /* Add an arrow to indicate dropdown */
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+  color: var(--secondary-color);
+  transition: transform 0.3s ease;
+}
+
+.has-dropdown:hover .dropdown-button::after {
+  transform: rotate(180deg); /* Rotate arrow on hover */
+}
+
+/* Menu Controls (Sign In, Search) */
+.menu-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.menu-login-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.menu-id {
+  display: flex;
+  flex-direction: column;
+  color: var(--dark-bg);
+}
+
+.menu-login-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: var(--light-bg);
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--primary-color);
+  width: 250px; /* Add a fixed width for better layout */
+}
+
+.menu-login:hover .menu-login-dropdown {
+  display: block;
+}
+
+/* Updated Styles for Menu Login Join Section */
+.menu-login-join {
+  text-align: center;
+}
+
+.menu-login-join h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.menu-login-join p {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--dark-bg);
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn.-main {
+  background-color: var(--primary-color);
+  color: var(--light-bg);
+  border: none;
+}
+
+.btn.-main:hover {
+  background-color: var(--dark-bg);
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.btn.-link-reverse {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.btn.-link-reverse:hover {
+  background-color: var(--primary-color);
+  color: var(--light-bg);
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.btn.-block {
+  display: block;
+  width: 80%;
+  margin: 0 auto 1rem;
+}
+
+.btn.upper {
+  text-transform: uppercase;
+}
+
+/* Search Bar */
+.menu-search {
+  display: flex;
+  align-items: center;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-form input {
+  padding: 0.5rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  width: 250px;
+}
+
+.search-form button {
+  background-color: var(--primary-color);
+  color: var(--light-bg);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-form button i {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.search-form button:hover {
+  background-color: var(--dark-bg);
+}

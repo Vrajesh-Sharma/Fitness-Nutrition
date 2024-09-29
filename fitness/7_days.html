@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7-Day Diet and Workout Plan</title>
+    <link rel="stylesheet" href="nav.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f3f4f6;
+      }
+      :root {
+        --primary-color: #ae2012; /* Red */
+        --secondary-color: #003566; /* Blue */
+        --light-bg: #ffffff; /* White */
+        --dark-bg: #333333; /* Dark gray */
+      }
+
+      .plan-container {
+        width: 100%;
+        max-width: 800px;
+        margin: auto;
+      }
+
+      .day-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        margin-bottom: 10px;
+        margin-top: 5px;
+        background-color: var(--dark-bg);
+        border-radius: 8px;
+        color: var(--light-bg);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .day-container:hover {
+        background-color: var(--secondary-color);
+      }
+
+      .left-part {
+        width: 20%;
+      }
+      .middle-part {
+        width: 60%;
+      }
+      .right-part {
+        width: 20%;
+      }
+
+      .middle-part {
+        text-align: center;
+      }
+
+      .right-part input[type="checkbox"] {
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: var(--light-bg);
+        position: relative;
+        left: 70%;
+      }
+
+      .right-part input[type="checkbox"]:checked {
+        background-color: var(--light-bg);
+      }
+
+      .right-part input[type="checkbox"]:checked::after {
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        color: var(--light-bg);
+        font-size: 18px;
+      }
+
+      .details-container {
+        display: none;
+        flex-direction: column;
+        background-color: var(--secondary-color);
+        padding: 20px;
+        border: 1px solid var(--primary-color);
+        margin-bottom: 10px;
+        border-radius: 8px;
+        color: var(--light-bg);
+        justify-content: space-between; /* Ensures even spacing */
+      }
+
+      .left-child-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+      }
+
+      span {
+        width: 20%;
+      }
+
+      .diet {
+        width: 72.5%;
+      }
+
+      .middle-child-container p,
+      .right-child-container p {
+        width: 70%;
+      }
+
+      .middle-child-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+      }
+
+      .right-child-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+      }
+
+      .left-child-container,
+      .right-child-container,
+      .middle-child-container {
+        margin-bottom: 15px;
+      }
+
+      .left-child-container span,
+      .right-child-container span,
+      .middle-child-container span {
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      .left-child-container p,
+      .right-child-container p,
+      .middle-child-container p {
+        margin-left: 20px;
+        color: var(--light-bg);
+      }
+
+      .left-child-container input[type="checkbox"],
+      .right-child-container input[type="checkbox"],
+      .middle-child-container input[type="checkbox"] {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        margin-left: 20px;
+        background-color: var(--light-bg);
+      }
+
+      .left-child-container input[type="checkbox"]:checked,
+      .right-child-container input[type="checkbox"]:checked,
+      .middle-child-container input[type="checkbox"]:checked {
+        background-color: #00ff00;
+        border: 2px solid #00ff00;
+      }
+
+      .left-child-container input[type="checkbox"]:checked::after,
+      .right-child-container input[type="checkbox"]:checked::after,
+      .middle-child-container input[type="checkbox"]:checked::after {
+        content: "✓";
+        position: absolute;
+        top: -2px;
+        left: 3px;
+        color: var(--light-bg);
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="fb-menu" id="header">
+      <div class="container header-container">
+        <h1 class="brand"><a href="index.html">EmpowerFit</a></h1>
+        <nav class="menu-main">
+          <ul>
+            <li class="has-dropdown workouts">
+              <a href="#" class="anchor dropdown-button">Workouts</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="workout_video.html">Workout Videos</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown programs">
+              <a href="#" class="anchor dropdown-button">Programs</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="meal_plan.html">Meal Plans</a></li>
+                <li><a href="routine.html">Routines</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown healthy-living">
+              <a href="#" class="anchor dropdown-button">Healthy Living</a>
+              <ul class="sub-menu the-dropdown">
+                <li><a href="expert_articles.html">Expert Articles</a></li>
+                <li><a href="healthy_tips.html">Healthy Tips</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <div class="menu-controls">
+          <!-- Updated "Hi! Sign In" Dropdown -->
+          <div class="menu-login has-dropdown">
+            <div
+              class="menu-login-button logged-out dropdown-button"
+              tabindex="0"
+            >
+              <menu-avatar></menu-avatar>
+              <div class="menu-id">
+                <span id="signin">Hi! Sign In</span>
+                <span
+                  >My Fitness<i
+                    class="material-symbols-outlined fill nav-carrot"
+                  ></i
+                ></span>
+              </div>
+            </div>
+            <div class="menu-login-dropdown the-dropdown">
+              <div class="menu-login-join">
+                <h2>Join for Free!</h2>
+                <p>
+                  Join for free and start building and tracking your workouts!
+                </p>
+                <a href="#" class="btn -main -block">Join</a>
+                <a href="sign_up.html" class="btn -link-reverse -block upper"
+                  >Sign Up</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Updated Search Bar -->
+          <div class="menu-search">
+            <form class="search-form" method="GET" action="/search">
+              <input
+                name="keywords"
+                type="text"
+                placeholder="Search for workouts, programs..."
+              />
+              <button type="submit">search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="plan-container">
+      <!-- Day 1 -->
+      <div class="day-container" onclick="toggleDetails('day1-details')">
+        <div class="left-part">Day 1</div>
+        <div class="middle-part">Full Body Workout and Balanced Diet</div>
+        <div class="right-part">
+          <input
+            type="checkbox"
+            id="day1-checkbox"
+            class="parent-checkbox"
+            disabled
+          />
+        </div>
+      </div>
+      <div id="day1-details" class="details-container">
+        <!-- Diet Section -->
+        <div class="left-child-container">
+          <span>Diet Plan</span>
+          <div class="diet">
+            <p>Breakfast: Oatmeal</p>
+            <p>Lunch: Chicken Salad</p>
+            <p>Dinner: Grilled Fish</p>
+          </div>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day1-checkbox"
+            onchange="updateParentCheckbox('day1-details', 'day1-checkbox')"
+          />
+        </div>
+        <!-- Workout Section -->
+        <div class="middle-child-container">
+          <span>Workout</span>
+          <p>Jumping Jacks, Push-ups, Mountain Climbers</p>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day1-checkbox"
+            onchange="updateParentCheckbox('day1-details', 'day1-checkbox')"
+          />
+        </div>
+        <!-- Yoga Section -->
+        <div class="right-child-container">
+          <span>Yoga</span>
+          <p>Sun Salutation</p>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day1-checkbox"
+            onchange="updateParentCheckbox('day1-details', 'day1-checkbox')"
+          />
+        </div>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="day-container" onclick="toggleDetails('day2-details')">
+        <div class="left-part">Day 2</div>
+        <div class="middle-part">Upper Body Workout & Light Meals</div>
+        <div class="right-part">
+          <input
+            type="checkbox"
+            id="day2-checkbox"
+            class="parent-checkbox"
+            disabled
+          />
+        </div>
+      </div>
+      <div id="day2-details" class="details-container">
+        <!-- Diet Section -->
+        <div class="left-child-container">
+          <span>Diet Plan</span>
+          <div class="diet">
+            <p>Breakfast: Yogurt</p>
+            <p>Lunch: Veggie Wrap</p>
+            <p>Dinner: Grilled Chicken</p>
+          </div>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day2-checkbox"
+            onchange="updateParentCheckbox('day2-details', 'day2-checkbox')"
+          />
+        </div>
+        <!-- Workout Section -->
+        <div class="middle-child-container">
+          <span>Workout</span>
+          <p>Push-ups, Dumbbell Rows</p>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day2-checkbox"
+            onchange="updateParentCheckbox('day2-details', 'day2-checkbox')"
+          />
+        </div>
+        <!-- Yoga Section -->
+        <div class="right-child-container">
+          <span>Yoga</span>
+          <p>Cat-Cow</p>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day2-checkbox"
+            onchange="updateParentCheckbox('day2-details', 'day2-checkbox')"
+          />
+        </div>
+      </div>
+
+      <!-- Day 3 -->
+      <div class="day-container" onclick="toggleDetails('day3-details')">
+        <div class="left-part">Day 3</div>
+        <div class="middle-part">Lower Body Workout & Protein-Rich Meals</div>
+        <div class="right-part">
+          <input
+            type="checkbox"
+            id="day3-checkbox"
+            class="parent-checkbox"
+            disabled
+          />
+        </div>
+      </div>
+      <div id="day3-details" class="details-container">
+        <!-- Diet Section -->
+        <div class="left-child-container">
+          <span>Diet Plan</span>
+          <div class="diet">
+            <p>Breakfast: Scrambled Eggs</p>
+            <p>Lunch: Quinoa Salad</p>
+            <p>Dinner: Beef Stir-fry</p>
+          </div>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day3-checkbox"
+            onchange="updateParentCheckbox('day3-details', 'day3-checkbox')"
+          />
+        </div>
+        <!-- Workout Section -->
+        <div class="middle-child-container">
+          <span>Workout</span>
+          <p>Squats, Lunges, Leg Press</p>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day3-checkbox"
+            onchange="updateParentCheckbox('day3-details', 'day3-checkbox')"
+          />
+        </div>
+        <!-- Yoga Section -->
+        <div class="right-child-container">
+          <span>Yoga</span>
+          <p>Warrior Pose</p>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day3-checkbox"
+            onchange="updateParentCheckbox('day3-details', 'day3-checkbox')"
+          />
+        </div>
+      </div>
+
+      <!-- Day 4 -->
+      <div class="day-container" onclick="toggleDetails('day4-details')">
+        <div class="left-part">Day 4</div>
+        <div class="middle-part">Core Workout & Light Vegetarian Meals</div>
+        <div class="right-part">
+          <input
+            type="checkbox"
+            id="day4-checkbox"
+            class="parent-checkbox"
+            disabled
+          />
+        </div>
+      </div>
+      <div id="day4-details" class="details-container">
+        <!-- Diet Section -->
+        <div class="left-child-container">
+          <span>Diet Plan</span>
+          <div class="diet">
+            <p>Breakfast: Smoothie Bowl</p>
+            <p>Lunch: Grilled Vegetables</p>
+            <p>Dinner: Lentil Soup</p>
+          </div>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day4-checkbox"
+            onchange="updateParentCheckbox('day4-details', 'day4-checkbox')"
+          />
+        </div>
+        <!-- Workout Section -->
+        <div class="middle-child-container">
+          <span>Workout</span>
+          <p>Planks, Russian Twists, Leg Raises</p>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day4-checkbox"
+            onchange="updateParentCheckbox('day4-details', 'day4-checkbox')"
+          />
+        </div>
+        <!-- Yoga Section -->
+        <div class="right-child-container">
+          <span>Yoga</span>
+          <p>Boat Pose</p>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day4-checkbox"
+            onchange="updateParentCheckbox('day4-details', 'day4-checkbox')"
+          />
+        </div>
+      </div>
+
+      <!-- Day 5 -->
+      <div class="day-container" onclick="toggleDetails('day5-details')">
+        <div class="left-part">Day 5</div>
+        <div class="middle-part">Cardio & Energy-Boosting Meals</div>
+        <div class="right-part">
+          <input
+            type="checkbox"
+            id="day5-checkbox"
+            class="parent-checkbox"
+            disabled
+          />
+        </div>
+      </div>
+      <div id="day5-details" class="details-container">
+        <!-- Diet Section -->
+        <div class="left-child-container">
+          <span>Diet Plan</span>
+          <div class="diet">
+            <p>Breakfast: Fruit Salad</p>
+            <p>Lunch: Turkey Sandwich</p>
+            <p>Dinner: Salmon and Rice</p>
+          </div>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day5-checkbox"
+            onchange="updateParentCheckbox('day5-details', 'day5-checkbox')"
+          />
+        </div>
+        <!-- Workout Section -->
+        <div class="middle-child-container">
+          <span>Workout</span>
+          <p>Running, Cycling, Jump Rope</p>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day5-checkbox"
+            onchange="updateParentCheckbox('day5-details', 'day5-checkbox')"
+          />
+        </div>
+        <!-- Yoga Section -->
+        <div class="right-child-container">
+          <span>Yoga</span>
+          <p>Cobra Pose</p>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day5-checkbox"
+            onchange="updateParentCheckbox('day5-details', 'day5-checkbox')"
+          />
+        </div>
+      </div>
+
+      <!-- Day 6 -->
+      <div class="day-container" onclick="toggleDetails('day6-details')">
+        <div class="left-part">Day 6</div>
+        <div class="middle-part">HIIT & Protein-Packed Meals</div>
+        <div class="right-part">
+          <input
+            type="checkbox"
+            id="day6-checkbox"
+            class="parent-checkbox"
+            disabled
+          />
+        </div>
+      </div>
+      <div id="day6-details" class="details-container">
+        <!-- Diet Section -->
+        <div class="left-child-container">
+          <span>Diet Plan</span>
+          <div class="diet">
+            <p>Breakfast: Protein Shake</p>
+            <p>Lunch: Tuna Salad</p>
+            <p>Dinner: Chicken Breast</p>
+          </div>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day6-checkbox"
+            onchange="updateParentCheckbox('day6-details', 'day6-checkbox')"
+          />
+        </div>
+        <!-- Workout Section -->
+        <div class="middle-child-container">
+          <span>Workout</span>
+          <p>Burpees, High Knees, Jump Squats</p>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day6-checkbox"
+            onchange="updateParentCheckbox('day6-details', 'day6-checkbox')"
+          />
+        </div>
+        <!-- Yoga Section -->
+        <div class="right-child-container">
+          <span>Yoga</span>
+          <p>Downward Dog</p>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day6-checkbox"
+            onchange="updateParentCheckbox('day6-details', 'day6-checkbox')"
+          />
+        </div>
+      </div>
+
+      <!-- Day 7 -->
+      <div class="day-container" onclick="toggleDetails('day7-details')">
+        <div class="left-part">Day 7</div>
+        <div class="middle-part">Rest Day & Healthy Eating</div>
+        <div class="right-part">
+          <input
+            type="checkbox"
+            id="day7-checkbox"
+            class="parent-checkbox"
+            disabled
+          />
+        </div>
+      </div>
+      <div id="day7-details" class="details-container">
+        <!-- Diet Section -->
+        <div class="left-child-container">
+          <span>Diet Plan</span>
+          <div class="diet">
+            <p>Breakfast: Avocado Toast</p>
+            <p>Lunch: Grilled Chicken Wrap</p>
+            <p>Dinner: Baked Vegetables</p>
+          </div>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day7-checkbox"
+            onchange="updateParentCheckbox('day7-details', 'day7-checkbox')"
+          />
+        </div>
+        <!-- Workout Section -->
+        <div class="middle-child-container">
+          <span>Workout</span>
+          <p>Light Stretching, Walking</p>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day7-checkbox"
+            onchange="updateParentCheckbox('day7-details', 'day7-checkbox')"
+          />
+        </div>
+        <!-- Yoga Section -->
+        <div class="right-child-container">
+          <span>Yoga</span>
+          <p>Child's Pose</p>
+          <input
+            type="checkbox"
+            class="child-checkbox"
+            data-parent="day7-checkbox"
+            onchange="updateParentCheckbox('day7-details', 'day7-checkbox')"
+          />
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="link1">
+        <a href="#">EmpowerFit</a><br />
+        <pre>
+    Terms / Privacy / Help
+    ©2024 EmpowerFit Ltd</pre
+        >
+      </div>
+      <div class="link2">
+        <a href="#">Workout</a><br />
+        <a href="meal_plan.html">Meal Plans</a><br />
+        <a href="#">Routines</a>
+      </div>
+      <div class="link3">
+        <a href="expert_articles.html">Expert articles</a><br />
+        <a href="healthy_tips.html">healthy Tips</a><br />
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+    </footer>
+
+    <script>
+      let lastOpened = null;
+
+      function toggleDetails(id) {
+        if (lastOpened && lastOpened !== id) {
+          document.getElementById(lastOpened).style.display = "none";
+        }
+        var details = document.getElementById(id);
+        details.style.display =
+          details.style.display === "block" ? "none" : "block";
+        lastOpened = id;
+      }
+
+      function updateParentCheckbox(detailId, parentCheckboxId) {
+        const details = document.getElementById(detailId);
+        const childCheckboxes = details.querySelectorAll(".child-checkbox");
+        const parentCheckbox = document.getElementById(parentCheckboxId);
+
+        const allChecked = Array.from(childCheckboxes).every(
+          (checkbox) => checkbox.checked
+        );
+        parentCheckbox.checked = allChecked;
+        parentCheckbox.disabled = !allChecked;
+      }
+
+      /* Pop up script */
+
+      function updateParentCheckbox(detailsId, parentCheckboxId) {
+        const parentCheckbox = document.getElementById(parentCheckboxId);
+        const detailsContainer = document.getElementById(detailsId);
+
+        // Get all child checkboxes within the details container
+        const childCheckboxes =
+          detailsContainer.querySelectorAll(".child-checkbox");
+
+        // Check if all child checkboxes are selected
+        let allChecked = true;
+        childCheckboxes.forEach((checkbox) => {
+          if (!checkbox.checked) {
+            allChecked = false;
+          }
+        });
+
+        // Update the parent checkbox based on child checkboxes' state
+        parentCheckbox.checked = allChecked;
+        parentCheckbox.disabled = !allChecked;
+
+        // Show the alert if all child checkboxes are checked and parent is selected
+        if (allChecked) {
+          const dayNumber = parentCheckboxId.match(/\d+/)[0]; // Extract day number from checkbox id
+          alert(`Whohoo!! You have completed Day ${dayNumber}`);
+        }
+      }
+    </script>
+  </body>
+</html>
