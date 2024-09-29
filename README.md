@@ -29,3 +29,20 @@ A personalized nutrition and diet plan website that allows users to sign up, log
 - [Nishi Patel](https://github.com/Nishi1195) - Frontend
 - [Yug Limachiya](https://github.com/Yug3001) - Website tester
 - [Parth Bhutaiya](https://github.com/Parth-Bhutaiya-06) - Backend and Database
+
+## ScreenShots
+
+- HomePage
+![Alt text](fitness/asset/Screenshot(321).png)
+
+
+- SignUp page
+![Alt text](fitness/asset/Screenshot(322).png)
+
+
+- DietPlan
+![Alt text](fitness/asset/Screenshot(325).png)
+
+
+- Dashboard
+![Alt text](fitness/asset/Screenshot(329).png)
